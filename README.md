@@ -3,7 +3,7 @@
 #### Cara Pakai
 
 1. Install [Node.js](https://nodejs.org) dan [Git](https://git-scm.com/downloads)
-2. Buka Terminal / CMD / Git Bash, kemudian paste:
+2. Buka Terminal / CMD / Git Bash, kemudian paste.
    ```
    git clone https://github.com/baguspangestu/crypto-wallet-generator.git
    ```
