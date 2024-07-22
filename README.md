@@ -2,25 +2,24 @@
 
 #### Cara Pakai
 
-1. Download dan Install [Node.js](https://nodejs.org)
-2. Download dan Install [Git](https://git-scm.com/downloads)
-3. Buka Terminal / CMD / Git Bash, kemudian paste:
+1. Download dan Install [Node.js](https://nodejs.org) dan [Git](https://git-scm.com/downloads)
+2. Buka Terminal / CMD / Git Bash, kemudian paste:
    ```
    git clone https://github.com/baguspangestu/crypto-wallet-generator.git
    ```
-4. Masuk ke direktori Project.
+3. Masuk ke direktori Project.
    ```
    cd crypto-wallet-generator
    ```
-5. Install Package.
+4. Install Package.
    ```
    npm install
    ```
-6. Salin file .env.example menjadi .env kemudian ubah nilai SECRET_KEY
+5. Salin file .env.example menjadi .env kemudian ubah nilai SECRET_KEY
    ```
    cp .env.example .env
    ```
-7. Jalankan Program.
+6. Jalankan Program.
    ```
    npm start
    ```
