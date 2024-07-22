@@ -1,0 +1,22 @@
+{
+  "name": "crypto-wallet-generator",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "crypto",
+    "wallet",
+    "generator"
+  ],
+  "author": "Bagus Pangestu",
+  "license": "ISC",
+  "description": "Crypto Wallet Generator",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.1",
+    "figlet": "^1.7.0",
+    "inquirer": "^10.1.0"
+  }
+}
