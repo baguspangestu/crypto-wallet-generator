@@ -52,7 +52,7 @@ const generateWalletWithFilter = async (filter, message) => {
     process.stdout.write(
       `\r🔥 Attempts: ${++attempts}x, Time: ${time}s -> ${wallet.address}`
     );
-  } while (filter(wallet));
+  } while (!filter(wallet));
 
   await saveEncryptedWallet(wallet);
 
@@ -64,9 +64,15 @@ const generateWalletWithFilter = async (filter, message) => {
 };
 
 const generateWalletWithSameCharacter = async (length, type) => {
-  const message = `MENCARI WALLET DENGAN PANJANG KARAKTER CANTIK DI AWAL ${
-    type === 1 ? "ATAU" : "DAN"
-  } AKHIR >= (${length})`;
+  const message = `MENCARI WALLET DENGAN PANJANG KARAKTER CANTIK DI ${
+    type === 1
+      ? "AWAL"
+      : type === 2
+      ? "AKHIR"
+      : type === 3
+      ? "AWAL ATAU AKHIR"
+      : "AWAL DAN AKHIR"
+  } >= (${length})`;
 
   const filter = (wallet) => {
     const isPrefixCantik = isAllCharactersSame(
@@ -75,8 +81,10 @@ const generateWalletWithSameCharacter = async (length, type) => {
     const isSuffixCantik = isAllCharactersSame(
       wallet.address.substring(wallet.address.length - length)
     );
-    if (type === 1) return !(isPrefixCantik || isSuffixCantik);
-    return !(isPrefixCantik && isSuffixCantik);
+    if (type === 1) return isPrefixCantik;
+    if (type === 2) return isSuffixCantik;
+    if (type === 3) return isPrefixCantik || isSuffixCantik;
+    return isPrefixCantik && isSuffixCantik;
   };
 
   await generateWalletWithFilter(filter, message);
@@ -88,7 +96,7 @@ const generateWalletWithPrefixAndSuffix = async (prefix, suffix) => {
   const filter = (wallet) => {
     const isSameWithPrefix = wallet.address.slice(2).startsWith(prefix);
     const isSameWithSuffix = wallet.address.endsWith(suffix);
-    return !(isSameWithPrefix && isSameWithSuffix);
+    return isSameWithPrefix && isSameWithSuffix;
   };
 
   await generateWalletWithFilter(filter, message);
@@ -106,8 +114,10 @@ const generateWalletCantik = async () => {
       name: "type",
       message: "Tipe Pencarian:",
       choices: [
-        { name: "1. Awal atau Akhir", value: 1 },
-        { name: "2. Awal dan Akhir", value: 2 },
+        { name: "1. Awal", value: 1 },
+        { name: "2. Akhir", value: 2 },
+        { name: "3. Awal atau Akhir", value: 3 },
+        { name: "4. Awal dan Akhir", value: 4 },
       ],
     },
   ]);
