@@ -15,7 +15,7 @@
    ```
    npm install
    ```
-5. Salin file .env.example menjadi .env kemudian ubah nilai SECRET_KEY
+5. Salin file .env.example menjadi .env kemudian ubah nilai SECRET_KEY pada file .env
    ```
    cp .env.example .env
    ```
