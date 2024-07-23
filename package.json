@@ -1,11 +1,11 @@
 {
   "name": "crypto-wallet-generator",
-  "version": "1.0.0",
-  "main": "./src/app.js",
-  "bin": "./src/app.js",
+  "version": "1.1.0",
+  "main": "src/app.js",
+  "bin": "src/app.js",
   "scripts": {
-    "start": "node ./src/app.js",
-    "build": "npx pkg . --out-path build"
+    "start": "node src/app.js",
+    "build": "node build.js"
   },
   "pkg": {
     "assets": [

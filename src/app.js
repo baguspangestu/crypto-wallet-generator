@@ -151,31 +151,77 @@ const generateWalletCustom = async () => {
 
 const myWallets = async () => {
   const encryptedWallets = await readEncryptedWallets();
+  const address = encryptedWallets.length
+    ? encryptedWallets.map((e, i) => ({
+        name: i + 1 + ". 0x" + e.address,
+        value: i + 1,
+      }))
+    : [{ name: "⛔", disabled: "Belum ada wallet." }];
 
-  if (!encryptedWallets.length) {
-    console.log("\n-----------------------------------");
-    console.log("⛔ Belum ada wallet");
-    console.log("-----------------------------------\n");
-    return;
-  }
+  const answers1 = await prompt([
+    {
+      type: "list",
+      name: "menu",
+      message: "Pilih Address:",
+      choices: [
+        ...address,
+        { name: "⬅️ Kembali", value: 0 },
+        { name: "Github:", disabled: "https://github.com/baguspangestu" },
+      ],
+    },
+  ]);
 
-  for (let index = 0; index < encryptedWallets.length; index++) {
-    const encryptedWallet = encryptedWallets[index];
+  if (answers1.menu === 0) return;
+
+  const answers2 = await prompt([
+    {
+      type: "list",
+      name: "menu",
+      message: "Opsi:",
+      choices: [
+        { name: "1. Lihat", value: 1 },
+        { name: "2. Hapus", value: 2 },
+        { name: "⬅️ Kembali", value: 0 },
+        { name: "Github:", disabled: "https://github.com/baguspangestu" },
+      ],
+    },
+  ]);
+
+  if (answers2.menu === 1) {
     const wallet = await ethers.Wallet.fromEncryptedJson(
-      JSON.stringify(encryptedWallet, null, 2),
+      JSON.stringify(encryptedWallets[answers1.menu - 1], null, 2),
       secretKey
     );
 
-    if (index === 0) console.log("\n-----------------------------------");
+    console.log("\n-----------------------------------");
     console.log("⚡ Address:", wallet.address);
     console.log("⚡ Mnemonic:", wallet.mnemonic.phrase);
     console.log("⚡ Private Key:", wallet.privateKey);
-    console.log(
-      `-----------------------------------${
-        index === encryptedWallets.length - 1 ? "\n" : ""
-      }`
-    );
+    console.log("-----------------------------------\n");
+  } else if (answers2.menu === 2) {
+    const answers3 = await prompt([
+      {
+        type: "list",
+        name: "menu",
+        message: "Yakin ingin menghapus Wallet ini?",
+        choices: [
+          { name: "1. Batal", value: 1 },
+          { name: "2. Yakin", value: 2 },
+        ],
+      },
+    ]);
+
+    if (answers3.menu === 2) {
+      encryptedWallets.splice([answers1.menu - 1], 1);
+      const data = JSON.stringify(encryptedWallets, null, 2);
+      fs.writeFileSync(filePath, data);
+      console.log("\n-----------------------------------");
+      console.log("✔️ Berhasil menghapus wallet.");
+      console.log("-----------------------------------\n");
+    }
   }
+
+  await myWallets();
 };
 
 const generateWallet = async () => {
