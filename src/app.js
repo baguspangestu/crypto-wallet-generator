@@ -1,11 +1,15 @@
 const figlet = require("figlet");
-const fs = require("fs").promises;
+const fs = require("fs");
 const inquirer = require("inquirer");
+const os = require("os");
+const path = require("path");
 const { ethers } = require("ethers");
-require("dotenv").config();
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const secretKey = process.env.SECRET_KEY;
-const filePath = "wallets.json";
+const filePath = process.pkg
+  ? path.join(os.tmpdir(), "wallets.json")
+  : path.resolve(__dirname, "../wallets.json");
 
 const prompt = inquirer.createPromptModule();
 
@@ -24,9 +28,8 @@ const isAllCharactersSame = (str) => new Set(str).size <= 1;
 
 const readEncryptedWallets = async () => {
   try {
-    const file = await fs.readFile(filePath, "utf8");
-    return JSON.parse(file) || [];
-  } catch (err) {
+    return JSON.parse(fs.readFileSync(filePath, "utf8")) || [];
+  } catch (_) {
     return [];
   }
 };
@@ -35,7 +38,8 @@ const saveEncryptedWallet = async (wallet) => {
   const encryptedWallets = await readEncryptedWallets();
   const encryptedWallet = await wallet.encrypt(secretKey);
   encryptedWallets.push(JSON.parse(encryptedWallet));
-  await fs.writeFile(filePath, JSON.stringify(encryptedWallets, null, 2));
+  const data = JSON.stringify(encryptedWallets, null, 2);
+  fs.writeFileSync(filePath, data);
 };
 
 const generateWalletWithFilter = async (filter, message) => {
