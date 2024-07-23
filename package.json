@@ -2,8 +2,21 @@
   "name": "crypto-wallet-generator",
   "version": "1.0.0",
   "main": "app.js",
+  "bin": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "npx pkg . --out-path build"
+  },
+  "pkg": {
+    "assets": [
+      ".env",
+      "node_modules/figlet/fonts/Big.flf"
+    ],
+    "targets": [
+      "node18-linux-x64",
+      "node18-macos-x64",
+      "node18-win-x64"
+    ]
   },
   "keywords": [
     "crypto",
@@ -18,5 +31,8 @@
     "ethers": "^6.13.1",
     "figlet": "^1.7.0",
     "inquirer": "^10.1.0"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
   }
 }
