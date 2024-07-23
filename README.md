@@ -1,6 +1,10 @@
 # Crypto Wallet Generator
 
-#### Cara Pakai
+#### Link Download (x64)
+
+- [crypto-wallet-generator-win.exe](https://github.com/baguspangestu/crypto-wallet-generator/releases/download/crypto/crypto-wallet-generator-win.exe)
+
+#### Kalau mau dimodif lagi
 
 1. Install [Node.js](https://nodejs.org) dan [Git](https://git-scm.com/downloads)
 2. Buka Terminal / CMD / Git Bash, kemudian paste.
@@ -18,10 +22,6 @@
 5. Salin file .env.example menjadi .env kemudian ubah nilai SECRET_KEY pada file .env
    ```
    cp .env.example .env
-   ```
-6. Jalankan Program.
-   ```
-   npm start
    ```
 
 ## Main Menu
