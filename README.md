@@ -1,10 +1,10 @@
 # Crypto Wallet Generator
 
-#### Link Download
+#### Download Link
 
 - [crypto-wallet-generator-v1.1.0-win-x64.exe](https://github.com/baguspangestu/crypto-wallet-generator/releases/download/v.1.1.0/crypto-wallet-generator-v1.1.0-win-x64.exe)
 
-#### Kalau mau dimodif lagi
+#### Clone Project
 
 1. Install [Node.js](https://nodejs.org) dan [Git](https://git-scm.com/downloads)
 2. Buka Terminal / CMD / Git Bash, kemudian paste.
@@ -24,7 +24,9 @@
    cp .env.example .env
    ```
 
-## Main Menu
+## Screeenshot
+
+### Main Menu
 
 ![Screenshot 1](s1.png)
 
@@ -35,11 +37,14 @@
 #### 1. Wallet Cantik
 
 ![Screenshot 3](s3.png)
+![Screenshot 4](s4.png)
 
 #### 2. Wallet Custom
 
-![Screenshot 4](s4.png)
+![Screenshot 5](s5.png)
 
 ### Daftar Walletku
 
-![Screenshot 5](s5.png)
+![Screenshot 6](s6.png)
+![Screenshot 7](s7.png)
+![Screenshot 8](s8.png)
