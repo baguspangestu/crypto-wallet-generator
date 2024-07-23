@@ -2,7 +2,7 @@
 
 #### Download Link
 
-- [crypto-wallet-generator-v1.1.1-win-x64.exe](https://github.com/baguspangestu/crypto-wallet-generator/releases/download/v.1.1.0/crypto-wallet-generator-v1.1.1-win-x64.exe)
+- [crypto-wallet-generator-v1.1.2-win-x64.exe](https://github.com/baguspangestu/crypto-wallet-generator/releases/download/1.1.2/crypto-wallet-generator-v1.1.2-win-x64.exe)
 
 #### Clone Project
 
