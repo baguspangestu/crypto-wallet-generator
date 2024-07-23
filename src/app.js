@@ -153,7 +153,7 @@ const myWallets = async () => {
   const encryptedWallets = await readEncryptedWallets();
   const address = encryptedWallets.length
     ? encryptedWallets.map((e, i) => ({
-        name: i + 1 + ". 0x" + e.address,
+        name: i + 1 + ". " + ethers.getAddress(e.address),
         value: i + 1,
       }))
     : [{ name: "⛔", disabled: "Belum ada wallet." }];
