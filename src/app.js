@@ -256,6 +256,7 @@ const mainMenu = async () => {
         choices: [
           { name: "1. Daftar Walletku", value: 1 },
           { name: "2. Generate Wallet", value: 2 },
+          { name: "♾️ Refresh", value: 3 },
           { name: "✖️ Tutup", value: 0 },
           { name: "Github:", disabled: "https://github.com/baguspangestu" },
         ],
@@ -268,6 +269,8 @@ const mainMenu = async () => {
     } else if (answers.menu === 2) {
       await generateWallet();
       await mainMenu();
+    } else if (answers.menu === 3) {
+      runApp();
     } else {
       process.exit(0);
     }
@@ -276,9 +279,11 @@ const mainMenu = async () => {
   }
 };
 
-(async () => {
+const runApp = async () => {
   console.clear();
   await title("Crypto Wallet Generator");
   console.log("");
   await mainMenu();
-})();
+};
+
+runApp();
